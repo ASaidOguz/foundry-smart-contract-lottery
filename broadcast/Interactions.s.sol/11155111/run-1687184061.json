@@ -1,0 +1,38 @@
+{
+  "transactions": [
+    {
+      "hash": "0x3349f68529a1cec8e6b65ee6650daad560647dac119bcdad48ef482d364c218a",
+      "transactionType": "CALL",
+      "contractName": "LinkToken",
+      "contractAddress": "0x779877A7B0D9E8603169DdbD7836e478b4624789",
+      "function": "transferAndCall(address,uint256,bytes):(bool)",
+      "arguments": [
+        "0x8103B0A8A00be2DDC778e6e7eaa21791Cd364625",
+        "3000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000b95"
+      ],
+      "transaction": {
+        "type": "0x02",
+        "from": "0x92e5c70dd41824a0617e07271a7e1e81a9bce064",
+        "to": "0x779877a7b0d9e8603169ddbd7836e478b4624789",
+        "gas": "0x1b43f",
+        "value": "0x0",
+        "data": "0x4000aea00000000000000000000000008103b0a8a00be2ddc778e6e7eaa21791cd36462500000000000000000000000000000000000000000000000029a2241af62c0000000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000b95",
+        "nonce": "0x134",
+        "accessList": []
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [],
+  "libraries": [],
+  "pending": [
+    "0x3349f68529a1cec8e6b65ee6650daad560647dac119bcdad48ef482d364c218a"
+  ],
+  "returns": {},
+  "timestamp": 1687184061,
+  "chain": 11155111,
+  "multi": false,
+  "commit": "7c66f67"
+}

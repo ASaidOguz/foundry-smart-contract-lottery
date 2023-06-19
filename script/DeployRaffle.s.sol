@@ -17,13 +17,14 @@ HelperConfig helperconfig=new HelperConfig();
            bytes32 gasLane,
            uint64 subscriptionId,
            uint32 callbackGasLimit,
-           address link)=helperconfig.activeNetworkconfig();
+           address link,
+           uint256 deployerKey)=helperconfig.activeNetworkconfig();
 
            if (subscriptionId==0){
             CreateSubscription createSubscription=new CreateSubscription();
-            subscriptionId=createSubscription.createSubscription(vrfCoordinator);
+            subscriptionId=createSubscription.createSubscription(vrfCoordinator,deployerKey);
             FundSubscription fundSubscription=new FundSubscription();
-            fundSubscription.fundSubscription(vrfCoordinator,subscriptionId,link);
+            fundSubscription.fundSubscription(vrfCoordinator,subscriptionId,link,deployerKey);
            }
         vm.startBroadcast();
     Raffle raffle=new Raffle(entranceFee,
@@ -36,7 +37,8 @@ HelperConfig helperconfig=new HelperConfig();
         AddConsumer addconsumer= new AddConsumer();
         addconsumer.addConsumer(address(raffle),
                                 vrfCoordinator,
-                                subscriptionId);
+                                subscriptionId,
+                                deployerKey);
         return (raffle,helperconfig);                          
 }
 }

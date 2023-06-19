@@ -36,7 +36,9 @@ function setUp()external{
              gasLane,
              subscriptionId,
              callbackGasLimit,
-             Link)=helperconfig.activeNetworkconfig();
+             Link,
+             
+             )=helperconfig.activeNetworkconfig();
              
 }
 
@@ -185,12 +187,23 @@ function testPerformUpkeepUpdateRaffleStateandEmitsRequestId() raffleEnteredAndT
     assert(uint256(requestId)>0);
 }
 
-function testFullFillRandomWordsCanOnlyBeCalledAfterPeformUpkeep(uint256 randomRequestId) raffleEnteredAndTimePassed public{
+//! Use only for anvil local chain cause some test requires more arguments in fork-test
+modifier skipFork(){
+  if(block.chainid!=31337){
+    return;
+  }
+  _;
+}
+function testFullFillRandomWordsCanOnlyBeCalledAfterPeformUpkeep(uint256 randomRequestId) 
+             raffleEnteredAndTimePassed
+             skipFork public{
     vm.expectRevert("nonexistent request");
     VRFCoordinatorV2Mock(vrfCoordinator).fulfillRandomWords(randomRequestId,address(raffle));
 }
 
-function testFullfillRandomWordsPicksWinnerResetsAndSendsMoney()  public{
+function testFullfillRandomWordsPicksWinnerResetsAndSendsMoney()  
+             skipFork 
+             public{
     uint256 additionalEntrants=5;
     uint256 startingIndex=0;
     uint256 previousTimeStamp=raffle.getLasTimestamp();
